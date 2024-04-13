@@ -52,4 +52,16 @@ public class calculadoraTest {
         double resultado = calc.dividir(a, b);
         assertEquals(resultadoEsperado, resultado);
     }
+
+    @Test
+    @DisplayName("Teste de divisão por zero")
+    public void testDividirPorZero() {
+        try {
+            calc.dividir(10, 0);
+        } catch (IllegalArgumentException e) {
+            return; // Esperado que lance uma exceção, então o teste passa
+        }
+        // Se não lançou exceção, falha o teste
+        throw new AssertionError("Não lançou IllegalArgumentException para divisão por zero");
+    }
 }
